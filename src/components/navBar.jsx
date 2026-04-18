@@ -23,8 +23,8 @@ export default function NavBar()
     { name: "Contact Us", href: "/contact", icon: <MessageSquare size={16} /> },
   ];
     return(
-        <nav className={`fixed top-0 w-full z-50 transition-all duration-300  :${
-        scrolled ? "py-3 bg-black/80 backdrop-blur-md border-b border-white/10" : "py-6 bg-transparent"
+        <nav className={`fixed top-0 w-full z-50 transition-all duration-300  ${
+        scrolled ? "py-1  bg-black/80 backdrop-blur-md border-b border-white/10" : "py-1 bg-transparent"
       }`}>
               <div className="flex justify-between m-3 items-center">
                 <div className="flex-1  flex justify-start NavBarLogo  cursor-pointer">
