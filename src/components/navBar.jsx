@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image"
-import { Menu , Calendar,Info,ImageIcon,MessageSquare} from "lucide-react";
+import { Menu , Calendar,Info,ImageIcon,MessageSquare , XCircle,User} from "lucide-react";
 import { LogoStar } from "@/components/icons";
 import { useState , useEffect} from "react";
 import Link from "next/link";
 export default function NavBar()
 {
-    const {isMenuOpen,setMenuOpen} = useState(false);
-    const {scrolled,setScrolled} = useState(false);
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const [isMenuOpen,setMenuOpen] = useState(false);
+    const [scrolled,setScrolled] = useState(false);
+    const toggleMenu = () => setMenuOpen(!isMenuOpen);
     useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
@@ -56,6 +56,32 @@ export default function NavBar()
                       <Link href="/signup" className="font-mono text-sm uppercase tracking-[0.2em] bg-white text-black rounded-2xl p-2 hover:text-white hover:bg-white/60 transition-colors duration-300">SignUp</Link>
                   </div>
                 </div>
+                <button onClick={toggleMenu} className="md:hidden text-white focus:outline-none z-50">
+                  {isMenuOpen ? <XCircle/> :<Menu/>}
+                </button>
+              </div>
+              <div className={`fullScreenOverlay fixed inset-0 bg-black z-40 flex flex-col items-center justify-center transition-all duration-500 ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"}`}>
+                  <div className="flex flex-col items-center gap-8">
+                    {navLinks.map((link) => (
+                      <a
+                      key={link.name}
+                      href={link.href}
+                      className="font-sans text-2xl font-black uppercase tracking-tighter hover:italic transition-all duration-300"
+                      onClick={toggleMenu}
+                      >
+                        {link.name}
+                      </a>
+                    ))}
+                    <hr className="w-20 border-white/20 my-4" />
+                    <div className="flex flex-col items-center gap-6">
+                    <a href="/login" onClick={toggleMenu} className="font-mono text-sm uppercase tracking-widest text-white/50">
+                      Existing Account
+                    </a>
+                    <a href="/signup" onClick={toggleMenu} className="flex items-center gap-3 bg-white text-black px-12 py-4 rounded-full font-sans font-black uppercase tracking-widest  transition-all">
+                      Join Stars <User size={20} />
+                    </a>
+                  </div>
+                  </div>
               </div>
         </nav>
     );
