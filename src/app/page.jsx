@@ -29,7 +29,7 @@ export default function Home() {
           <div className="flex flex-col items-center">
           <Hero/>
           <div className="what-we-offer flex flex-col items-center">
-            <h1 className=" border-t-2  border-t-zinc-500 font-sans text-lg md:text-3xl uppercase font-black ">What do we offer?</h1>
+            <h1 className=" border-t-2  border-t-zinc-500 font-sans text-lg md:text-2xl uppercase font-black ">What do we offer?</h1>
             <div className="cards mx-20 my-15 cursor-pointer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 w-fit">
               {features.map((feature,i)=>(
                 <div 
@@ -40,7 +40,7 @@ export default function Home() {
                       height: `25px`,
                   }}/>
                   <div className="title">
-                    <h1 className="font-sans font-bold uppercase md:text-lg text-sm">{feature.title}</h1>
+                    <h1 className="font-sans font-bold text-center uppercase md:text-[15px] text-sm">{feature.title}</h1>
                   </div>
                   <div className="desc">
                     <p className="font-sans md:text-sm text-xs text-center">{feature.desc}</p>
