@@ -46,7 +46,7 @@ export default function Hero() {
             </div>
             <div className="Logo_and_text z-40 flex flex-col items-center gap-12">
                     <Image src="/stars_for_events.png" loading="eager" alt="" height={300} width={350} className="hover:scale-110 transition-all duration-300"/>
-                    <p className="items-center font-mono tracking-wider hover:text-white hover:cursor-pointer transition-all duration-200 text-white/65 text-lg md:text-2xl ">Book , Attend & Shine like a Star!</p>
+                    <p className="items-center font-mono tracking-wider hover:text-white hover:cursor-pointer transition-all duration-200 text-white/65 text-lg md:text-2xl text-center">Book , Attend & Shine like a Star!</p>
                     <Link href="/events" className="flex items-center gap-3 bg-white text-zinc-600 px-5 text-sm hover:scale-110  ease-out duration-200 py-2 rounded-full font-sans font-black uppercase tracking-widest  transition-all">
                         Book now!
                     </Link>

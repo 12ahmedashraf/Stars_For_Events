@@ -52,6 +52,10 @@ export default function Home() {
               
             </div>
           </div>
+            <div className="home-gallery flex flex-col items-center">
+              <h1 className=" border-t-2  border-t-zinc-500 font-sans text-xs text-center md:text-xl uppercase font-black ">We don&apos;t just organize events , we create life changing experiences!</h1>
+            
+            </div>
           </div>  
       );
 }
