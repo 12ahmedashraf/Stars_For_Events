@@ -163,9 +163,7 @@ export default function About()
                            </div>
                            <h1 className="font-sans font-black text-white/40  text-2xl md:text-4xl text-center uppercase">Some of our <span className="text-white">Shines!</span></h1>
                     </div>
-                    <div className="gallery max-w-4xl flex items-center justify-center">
                     <ImageSlider slides={gallery}/>
-                    </div>
                 </div>
 
             </div>
