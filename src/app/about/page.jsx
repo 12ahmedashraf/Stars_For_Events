@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useId } from "react";
 import { MapPin ,Users,Stars,Calendar} from "lucide-react";
+import { color } from "framer-motion";
 export default function About()
 {
         const baseId = useId();
@@ -81,9 +82,9 @@ export default function About()
                 <div className="md:ml-10 md:mr-10 gap-10 our-vision flex md:flex-row flex-col items-center md:items-start">
                     <div className="textContent flex flex-col gap-5 items-center md:items-start">
                          <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
-                           <h5 className="text-sm md:text-lg font-light text-white/40 font-mono ">Our Vision</h5>
+                           <h5 className="text-sm md:text-lg font-light text-white/40 font-mono  ">Our Vision</h5>
                            </div>
-                           <h1 className="font-sans font-black  text-2xl md:text-4xl text-center">Beyond the <span className="text-white/40">Stars!</span></h1>
+                           <h1 className="font-sans font-black  text-2xl md:text-4xl text-center uppercase">Beyond the <span className="text-white/40">Stars!</span></h1>
                            <p className="text-center md:text-left font-bold font-sans text-xs md:text-lg">At <span className="text-white/40">STARS</span>, our vision is to redefine the digital infrastructure of Egypt’s social landscape. We believe that an event is more than a date on a calendar—it is a point of convergence for creativity, culture, and community. By blending minimalist design with high-performance engineering, we aim to provide a seamless gateway to the Egypt`s most significant experiences, ensuring that the journey to an event is as refined as the event itself.</p>
                     </div>
                     <Image 
@@ -93,6 +94,60 @@ export default function About()
                     className=" hover:scale-110 transition-all hover:cursor-pointer duration-300 w-full shadow-2xl shadow-amber-50  inset-0  max-w-100 rounded-2xl h-auto object-contain"
                     alt="shehab"
                     />
+                </div>
+                <div className="md:ml-10 md:mr-10 mt-15 gap-10 our-vision flex  flex-col items-center ">
+                    <div className="textContent flex flex-col gap-5 items-center">
+                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
+                           <h5 className="text-sm md:text-lg font-light text-white/40 font-mono ">Our Mission</h5>
+                           </div>
+                           <h1 className="font-sans font-black  text-2xl md:text-4xl text-center uppercase">How we <span className="text-white/40">Shine?</span></h1>
+                    </div>
+                    <div className="boxes flex flex-col md:flex-row gap-10">
+                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                                        <LogoStar className="" style={{
+                                    width: `35px`,
+                                    height: `35px`,
+                                    fill: `black`,
+                                }}/>
+                                <div className="text flex flex-col gap-4">
+                                    <h1 className="font-mono font-bold text-center uppercase md:text-lg text-black text-sm">Elevating the Standard</h1>
+                                    <p className="font-mono text-xs md:text-sm text-black font-light  text-center">Setting a new benchmark for how events are organized and experienced, ensuring every gathering meets a professional, high-fidelity standard.</p>
+                                </div>
+                        </div>
+                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                                        <LogoStar className="" style={{
+                                    width: `35px`,
+                                    height: `35px`,
+                                    fill: `black`,
+                                }}/>
+                                <div className="text flex flex-col gap-4">
+                                    <h1 className="font-mono font-bold text-center uppercase md:text-lg text-black text-sm">Seamless Integration</h1>
+                                    <p className="font-mono text-xs md:text-sm text-black font-light  text-center">Developing the digital infrastructure that removes logistical friction, allowing the focus to remain on the event and the community.</p>
+                                </div>
+                        </div>
+                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                                        <LogoStar className="" style={{
+                                    width: `35px`,
+                                    height: `35px`,
+                                    fill: `black`,
+                                }}/>
+                                <div className="text flex flex-col gap-4">
+                                    <h1 className="font-mono font-bold text-center uppercase md:text-lg text-black text-sm">Fostering Connection</h1>
+                                    <p className="font-mono text-xs md:text-sm text-black font-light  text-center">Building a sustainable ecosystem where technical and creative communities can move beyond the screen and connect in person.</p>
+                                </div>
+                        </div>
+                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                                        <LogoStar className="" style={{
+                                    width: `35px`,
+                                    height: `35px`,
+                                    fill: `black`,
+                                }}/>
+                                <div className="text flex flex-col gap-4">
+                                    <h1 className="font-mono font-bold text-center uppercase md:text-lg text-black text-sm">Empowering Visionaries</h1>
+                                    <p className="font-mono text-xs md:text-sm text-black font-light  text-center">Providing the tools and support for organizers to turn complex creative and technical visions into successful real-world impact.</p>
+                                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
