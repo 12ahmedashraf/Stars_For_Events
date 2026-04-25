@@ -65,15 +65,15 @@ export default function Home() {
             </div>
           </div>
             <div className="home-gallery flex flex-col items-center mb-10">
-              <h1 className=" border-t-2  border-t-zinc-500 mb-10 font-sans text-sm text-center md:text-xl uppercase font-black ">We don&apos;t just organize events , we create life changing experiences!</h1>
+              <h1 className=" border-t-2  border-t-zinc-500 mb-10 font-sans text-lg text-center md:text-2xl uppercase font-black ">We don&apos;t just organize events , we create life changing experiences!</h1>
             <ImageSlider slides={HomePageSlides}/>
             </div>
             <div className="3-steps-to-shine">
               <div className="heading">
-              <h1 className="border-t-2 border-t-zinc-500 mb-10 font-sans text-sm md:text-2xl text-center uppercase font-black">3 steps to shine!</h1>
+              <h1 className="border-t-2 border-t-zinc-500 mb-10 font-sans text-lg md:text-2xl text-center uppercase font-black">3 steps to shine!</h1>
               </div>
               <div className="steps-boxes flex flex-col gap-10 md:flex-row mb-10">
-                <div className="step-box border-2 p-10  hover:scale-110 transition-all duration-300 ease-in-out rounded-4xl flex items-center gap-5 border-amber-50 ">
+                <div className="step-box border-2 p-10 hover:cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out rounded-4xl flex items-center gap-5 border-amber-50 ">
                     <LogoStar className="" style={{
                       height:`125px`,
                       width:`125px`
@@ -82,7 +82,7 @@ export default function Home() {
                       <h1 className="font-sans text-2xl md:text-5xl text-center uppercase font-black ">BOOK</h1>
                     </div>
                 </div>
-                <div className="step-box hover:scale-110 transition-all duration-300 ease-in-out  border-2 p-10  rounded-4xl flex items-center gap-5 border-amber-50 ">
+                <div className="step-box hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out  border-2 p-10  rounded-4xl flex items-center gap-5 border-amber-50 ">
                     <LogoStar className="" style={{
                       height:`125px`,
                       width:`125px`
@@ -91,7 +91,7 @@ export default function Home() {
                       <h1 className="font-sans text-2xl md:text-5xl text-center uppercase font-black ">Attend</h1>
                     </div>
                 </div>
-                <div className="step-box hover:scale-110 transition-all duration-300 ease-in-out border-2 p-10  rounded-4xl flex items-center gap-5 border-amber-50 ">
+                <div className="step-box hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out border-2 p-10  rounded-4xl flex items-center gap-5 border-amber-50 ">
                     <LogoStar className="" style={{
                       height:`125px`,
                       width:`125px`
