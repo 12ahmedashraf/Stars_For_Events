@@ -26,9 +26,9 @@ export default function ImageSlider({slides})
   setSlide((prev) => [prev[0] + direction, direction]);
 }, []);
     useEffect(()=> {
-        const timer = setInterval(()=>{newSlide(1);},5000);
+        const timer = setInterval(()=>{newSlide(1);},6500);
         return () => clearInterval(timer);
-    },[newSlide]);
+    },[newSlide,slide]);
     const current = Math.abs(slide%slides.length);
     return(
             <div className="relative aspect-video  md:h-[80vh] w-full overflow-hidden bg-black rounded-4xl ">
@@ -65,7 +65,16 @@ export default function ImageSlider({slides})
                     <ChevronRightCircle size={20}/>
                   </button>
                 </div>
-                
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                  {slides.map((_,i)=>(
+                    <div 
+                    key={i} 
+                    className={`h-1 transition-all duration-300 ${i === current ? "w-8 bg-white" : "w-2 bg-white/20"}`} 
+                  />
+                  ))
+
+                  }
+                </div>
             </div>
     );
 }
