@@ -70,7 +70,7 @@ export default function About()
                            <div className="info-box flex flex-col gap-2 items-center bg-white/10 backdrop-blur-md border hover:scale-110 hover:cursor-pointer transition-all duration-300 border-white/20 p-3 rounded-2xl shadow-xl">
                             <Users size={35} className="text-white/40"/>
                            <h5 className="text-lg md:text-xl font-light text-white font-mono">100K+</h5>
-                           <h5 className="text-sm md:text-xl font-light uppercase  text-white/40 font-mono">Starred Attendees!</h5>
+                           <h5 className="text-sm md:text-xl font-light uppercase  text-white/40 font-mono text-center">Starred Attendees!</h5>
                            </div>
                             <div className="info-box flex flex-col gap-2 items-center bg-white/10 backdrop-blur-md border hover:scale-110 hover:cursor-pointer transition-all duration-300 border-white/20 p-3 rounded-2xl shadow-xl">
                             <Stars size={35} className="text-white/40"/>
@@ -165,7 +165,11 @@ export default function About()
                     </div>
                     <ImageSlider slides={gallery}/>
                 </div>
-
+                <div className="cta flex justify-center my-20">
+                 <Link href="/events" className="flex w-fit items-center gap-3 bg-white text-black px-10 text-lg md:text-2xl hover:scale-110  ease-out duration-200 py-2 rounded-full font-sans font-black uppercase tracking-widest  transition-all">
+                        Book now!
+                    </Link>
+                    </div>
             </div>
         );
     }

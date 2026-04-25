@@ -68,7 +68,7 @@ export default function ImageSlider({slides})
                     <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
                   </motion.div>  
                 </AnimatePresence>
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                 <button onClick={() => newSlide(-1)}
                   className="p-4 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition-all backdrop-blur-sm">
                     <ChevronLeftCircle size={20}/>
