@@ -1,0 +1,71 @@
+"use client";
+import { useState,useEffect,useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeftCircle,ChevronRightCircle } from "lucide-react";
+import Image from "next/image";
+const variants = {
+  enter: (direction) => ({
+    x: direction > 0 ? "25%" : "-25%",
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction) => ({
+    zIndex: 0,
+    x: direction < 0 ? "25%" : "-25%",
+    opacity: 0,
+  }),
+};
+export default function ImageSlider({slides})
+{
+    const [[slide,direction],setSlide] = useState([0,0]);
+   const newSlide = useCallback((direction) => {
+  setSlide((prev) => [prev[0] + direction, direction]);
+}, []);
+    useEffect(()=> {
+        const timer = setInterval(()=>{newSlide(1);},5000);
+        return () => clearInterval(timer);
+    },[newSlide]);
+    const current = Math.abs(slide%slides.length);
+    return(
+            <div className="relative aspect-video  md:h-[80vh] w-full overflow-hidden bg-black rounded-4xl ">
+                <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                  <motion.div
+                    key={slide}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 },
+                  }}
+                  className="absolute inset-0 "
+                  >
+                    <Image 
+                    src={slides[current].image} 
+                    className="h-full w-full object-cover opacity-60"
+                    alt={slides[current].title}
+                    fill
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
+                  </motion.div>  
+                </AnimatePresence>
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full flex justify-center gap-6 z-20">
+                  <button onClick={() => newSlide(-1)}
+                  className="p-4 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition-all backdrop-blur-sm">
+                    <ChevronLeftCircle size={20}/>
+                  </button>
+                    <button onClick={() => newSlide(1)}
+                  className="p-4 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition-all backdrop-blur-sm">
+                    <ChevronRightCircle size={20}/>
+                  </button>
+                </div>
+                
+            </div>
+    );
+}
