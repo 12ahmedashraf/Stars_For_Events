@@ -5,10 +5,17 @@ import Link from "next/link";
 import { useId } from "react";
 import { MapPin ,Users,Stars,Calendar} from "lucide-react";
 import { color } from "framer-motion";
+import ImageSlider from "@/components/imageSlider";
 export default function About()
 {
         const baseId = useId();
         const stars = Array.from({length: 25});
+        const gallery=[
+            {
+                title:'shehab',
+                image: '/shehab.png',
+            }
+        ]
         return(
             <div className="about mb-15">
                 <div className="heroSection relative min-h-screen w-full z-0 flex items-center justify-center overflow-hidden bg-black">
@@ -149,6 +156,18 @@ export default function About()
                         </div>
                     </div>
                 </div>
+                <div className="our-gallery mt-10 flex items-center flex-col">
+                    <div className="textContent flex flex-col gap-5 items-center mb-10 justify-center">
+                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
+                           <h5 className="text-sm md:text-lg font-light text-white/40 font-mono ">Our Gallery</h5>
+                           </div>
+                           <h1 className="font-sans font-black text-white/40  text-2xl md:text-4xl text-center uppercase">Some of our <span className="text-white">Shines!</span></h1>
+                    </div>
+                    <div className="gallery max-w-4xl flex items-center justify-center">
+                    <ImageSlider slides={gallery}/>
+                    </div>
+                </div>
+
             </div>
         );
     }
