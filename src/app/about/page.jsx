@@ -166,7 +166,7 @@ export default function About()
                     <ImageSlider slides={gallery}/>
                 </div>
                 <div className="cta flex justify-center my-20   ">
-                 <Link href="/events" className="font-black font-sans text-2xl rounded-4xl md:text-4xl px-10 py-5  bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
+                 <Link href="/events" className="font-black font-sans text-2xl rounded-4xl md:text-4xl px-10 py-5  bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5  shadow-xl">
                         Book now!
                     </Link>
                     </div>

@@ -56,8 +56,8 @@ export default function About()
                     </div>
                     <div className="Logo_and_text z-40 mb-10 flex flex-col items-center justify-center gap-20 mt-35">
                            <div className="heading flex flex-col items-center">
-                                <h1 className="font-black font-sans md:text-6xl text-3xl hover:cursor-pointer hover:text-white/40 transition-all duration-300">Our Events</h1>
-                                <h2 className="font-mono text-sm md:text-xl text-white/40 text-center mt-5">Book, Attend & Shine!</h2>
+                                <h1 className="font-black font-sans md:text-6xl text-4xl hover:cursor-pointer hover:text-white/40 transition-all duration-300">Our Events</h1>
+                                <h2 className="font-mono text-lg md:text-xl text-white/40 text-center mt-5">Book, Attend & Shine!</h2>
                            </div>
                     </div>
                     
@@ -77,7 +77,7 @@ export default function About()
                                     <h2 className="font-mono">LIVE</h2>
                                 </div>
                             </div>
-                            <h1 className="font-black font-sans text-center uppercase text-white text-lg md:text-xl">NextStep</h1>
+                            <h1 className="font-black font-sans text-center uppercase text-white text-xl md:text-2xl">NextStep</h1>
                             <div className="content gap-4 ml-10 my-2 w-full flex flex-col">
                                 <div className="location  flex gap-4"><MapPin size={20}/>
                                  <p className="font-sans font-light text-sm">Montazah Garden , Smouha</p></div>
