@@ -18,14 +18,32 @@ export default function NavBar()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [setScrolled]);
-  
+    const [ContactOpen,setContactOpen] = useState(0);
     const navLinks = [
     { name: "Home", href: "/", icon: <Calendar size={16} /> },
     { name: "About Us", href: "/about", icon: <ImageIcon size={16} /> },
-    { name: "Events", href: "/Events", icon: <Info size={16} /> },
+    { name: "Events", href: "/events", icon: <Info size={16} /> },
     { name: "Contact Us", href: "/contact", icon: <MessageSquare size={16} /> },
   ];
-  
+  const MobilenavLinks = [
+    { name: "Home", href: "/", icon: <Calendar size={16} /> },
+    { name: "About Us", href: "/about", icon: <ImageIcon size={16} /> },
+    { name: "Events", href: "/events", icon: <Info size={16} /> },
+    { name: "Book Now!", href: "/events", icon: <MessageSquare size={16} /> },
+  ];
+  useEffect(() => {
+  const handleClickOutside = () => {
+    setContactOpen(false);
+  };
+
+  if (ContactOpen) {
+    window.addEventListener("click", handleClickOutside);
+  }
+
+  return () => {
+    window.removeEventListener("click", handleClickOutside);
+  };
+}, [ContactOpen]);
     return(
         <>
             <nav className={`fixed top-0 w-full z-50 transition-all duration-300  ${
@@ -45,14 +63,43 @@ export default function NavBar()
                     <div className="Desktop hidden md:flex flex-2 justify-between items-center">
                       <div className="links flex gap-12 items-center justify-center">
                       {
-                        navLinks.map((link) => (
-                          <Link
+                        navLinks.map((link) => {
+                          if(link.name==="Contact Us")
+                          {
+                            return (
+                              <div
+                              key={link.name}
+                              className="relative py-2"
+                              onClick={()=>setContactOpen(ContactOpen+1)}
+                              >
+                                <button className="font-mono text-sm uppercase tracking-[0.2em] text-white/60 hover:text-white hover:cursor-pointer transition-all hover:scale-110 ease-out duration-300"
+                                onClick={(e)=>{e.stopPropagation();
+                                  setContactOpen(!ContactOpen);
+                                }}
+                                >
+                                {link.name}
+                              </button>
+                               <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-32 bg-zinc-900 border border-white/10 rounded-xl py-2 transition-all duration-300 ${ContactOpen%2===1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"}`}>
+                                <div className="flex flex-col gap-1 px-1"
+                                   onClick={(e)=>{e.stopPropagation();
+                                }}
+                                >
+                                  <Link href="https://instagram.com" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">Instagram</Link>
+                                  <Link href="https://facebook.com" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">CALL</Link>
+                                  <Link href="mailto:hello@stars.com" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">Email</Link>
+                                </div>
+                              </div>
+                              </div>
+                            )
+                          }
+                          return (<Link
                           key={link.name}
                           href={link.href}
                           className="font-mono text-sm uppercase tracking-[0.2em] text-white/60 hover:text-white transition-all hover:scale-110 ease-out relative group duration-300">
                           {link.name}
-                          </Link>
-                        ))
+                          </Link>)
+                          
+})
                       }
                       </div>
                       <div className="userActions flex justify-end flex-1 items-center gap-6">
@@ -68,7 +115,7 @@ export default function NavBar()
             </nav>
             <div className={`fullScreenOverlay fixed inset-0 bg-black z-40 flex flex-col items-center justify-center transition-all duration-500 ${isMenuOpen ? "opacity-100 translate-y-0 bg-black" : "opacity-0 -translate-y-full pointer-events-none"}`}>
                   <div className="flex flex-col items-center gap-8">
-                    {navLinks.map((link) => (
+                    {MobilenavLinks.map((link) => (
                       <Link
                       key={link.name}
                       href={link.href}

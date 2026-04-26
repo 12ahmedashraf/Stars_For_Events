@@ -33,7 +33,7 @@ export default function Home() {
     },
     {
       title: "Venue Curation",
-      desc: "Access to Alexandria’s most exclusive locations. We transform hidden gems into the center of the galaxy for one night.",
+      desc: "Access to Egypt’s most exclusive locations. We transform hidden gems into the center of the galaxy for one night.",
       icon: <MapPin size={30} />,
     },
   ];
