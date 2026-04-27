@@ -4,7 +4,7 @@ import { Menu , Calendar,Info,ImageIcon,MessageSquare , XCircle,User} from "luci
 import { LogoStar } from "@/components/icons";
 import { useState , useEffect} from "react";
 import Link from "next/link";
-
+import { SignInButton,SignUpButton,Show,UserButton } from "@clerk/nextjs";
 export default function NavBar()
 {
     const [isMenuOpen,setMenuOpen] = useState(false);
@@ -103,9 +103,21 @@ export default function NavBar()
                       }
                       </div>
                       <div className="userActions flex justify-end flex-1 items-center gap-6">
-                          <Link href="/login" className="font-mono text-sm uppercase tracking-[0.2em] text-white/60 hover:text-white transition-all hover:scale-110 ease-out duration-300">
-                            SignIn</Link>
-                          <Link href="/signup" className="font-mono text-sm uppercase tracking-[0.2em] bg-white text-black rounded-2xl p-2 hover:text-white hover:bg-white/60 transition-colors duration-300">SignUp</Link>
+                          <Show when="signed-out">
+                          <SignInButton mode="modal">
+                          <button  className="font-mono text-sm uppercase tracking-[0.2em] text-white/60 hover:text-white transition-all hover:scale-110 ease-out duration-300">
+                            SignIn</button></SignInButton>
+                            <SignUpButton mode="modal">
+                          <button className="font-mono text-sm uppercase tracking-[0.2em] bg-white text-black rounded-2xl p-2 hover:text-white hover:bg-white/60 transition-colors duration-300">SignUp</button>
+                          </SignUpButton>
+                        </Show>
+                        <Show when="signed-in">
+                          <div className="mr-5 gap-5 flex">
+                          <div className="bg-white/10 backdrop-blur-md border hover:scale-110 hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl flex items-center">
+                            <Link href="/user" className="md:text-xs font-light text-white/40 font-mono ">Profile</Link></div>
+                            <UserButton  appearance={{ elements: { userButtonAvatarBox: "!w-9.5 !h-9.5 border border-white/20 hover:border-white/50 transition-all" } }} />
+                          </div>
+                        </Show>
                       </div>
                     </div>
                     <button onClick={toggleMenu} className="md:hidden text-white focus:outline-none z-50">
@@ -127,15 +139,27 @@ export default function NavBar()
                     ))}
                     <hr className="w-20 border-white/20 my-4" />
                     <div className="flex flex-col items-center gap-6">
-                    <Link href="/login" onClick={toggleMenu} className="font-mono text-sm uppercase tracking-widest text-white/50">
+                      <Show when="signed-out">
+                        <SignInButton mode="modal">
+                    <button  onClick={toggleMenu} className="font-mono text-sm uppercase tracking-widest text-white/50">
                       Existing Account
-                    </Link>
-                    <Link href="/signup" onClick={toggleMenu} className="flex items-center gap-3 bg-white text-black px-12 py-4 rounded-full font-sans font-black uppercase tracking-widest  transition-all">
+                    </button>
+                    </SignInButton>
+                    <SignUpButton mode="modal">
+                    <button  onClick={toggleMenu} className="flex items-center gap-3 bg-white text-black px-12 py-4 rounded-full font-sans font-black uppercase tracking-widest  transition-all">
                       Join Stars <User size={20} />
-                    </Link>
+                    </button>
+                    </SignUpButton>
+                    </Show>
+                    <Show when="signed-in">
+                          <div className="mr-5 gap-10 flex flex-col items-center jusify-center">
+                            <Link href="/user" className="flex items-center gap-3 bg-white text-black px-12 py-4 rounded-full font-sans font-black uppercase tracking-widest  transition-all">Profile</Link>
+                            <UserButton  appearance={{ elements: {userButtonTrigger: "!w-15 !h-15",userButtonAvatarImage: "!w-15 !h-15", userButtonAvatarBox: "!w-15 !h-15 border border-white/20 hover:border-white/50 transition-all" } }} />
+                          </div>
+                    </Show>
                   </div>
                   </div>
-            </div>
+              </div>
         </>
     );
 }

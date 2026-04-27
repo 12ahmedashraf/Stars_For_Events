@@ -3,7 +3,7 @@ import { LogoStar } from "@/components/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useId } from "react";
-import { MapPin ,Users,Stars,Calendar} from "lucide-react";
+import { MapPin ,Users,Stars,Calendar,Ticket} from "lucide-react";
 import { color } from "framer-motion";
 import ImageSlider from "@/components/imageSlider";
 export default function About()
@@ -64,7 +64,7 @@ export default function About()
 
                 </div>
                 <div className="event-boxes grid md:grid-cols-4 mt-10 grid-cols-1 ">
-                        <div className="event-box rounded-4xl w-85 pb-10 border flex flex-col gap-5 border-white overflow-hidden items-center">
+                        <div className="event-box rounded-4xl w-85 pb-10 border flex flex-col gap-4 border-white overflow-hidden items-center">
                            <div className="banner relative w-full h-50 border-b border-b-white/30 "> 
                                 <Image 
                                     src="/shehab.png" 
@@ -78,11 +78,13 @@ export default function About()
                                 </div>
                             </div>
                             <h1 className="font-black font-sans text-center uppercase text-white text-xl md:text-2xl">NextStep</h1>
-                            <div className="content gap-4 ml-10 my-2 w-full flex flex-col">
+                            <div className="content gap-4 ml-10 mt-2 mb-3 w-full flex flex-col">
                                 <div className="location  flex gap-4"><MapPin size={20}/>
                                  <p className="font-sans font-light text-sm">Montazah Garden , Smouha</p></div>
                                   <div className="location  flex gap-4"><Calendar size={20}/>
                                  <p className="font-sans font-light text-sm">15 May 2026</p></div>
+                                  <div className="location  flex gap-4"><Ticket size={20}/>
+                                 <p className="font-sans font-light text-sm uppercase">Tickets for free!</p></div>
                             </div>
                             <div><Link href="" className="mx-10  font-sans animate-pop bg-white text-black p-2 text-sm font-black rounded-3xl">Book Now!</Link></div>
                         </div>

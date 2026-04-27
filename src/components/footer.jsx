@@ -2,11 +2,7 @@ import Image from "next/image";
 import { Facebook,Instagram } from "./icons";
 import {Phone, Mail} from "lucide-react";
 const contactLinks = [
-  { 
-    name: "Facebook", 
-    href: "https://facebook.com/stars", 
-    icon: <Facebook size={20} />, 
-  },
+ 
   { 
     name: "Instagram", 
     href: "https://instagram.com/stars", 
