@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Facebook,Instagram } from "./icons";
 import {Phone, Mail} from "lucide-react";
+import Link from "next/link";
 const contactLinks = [
  
   { 
@@ -29,9 +30,9 @@ export default function Footer(){
                 <div className="social flex gap-5 items-center">
                     {
                         contactLinks.map((contact)=>(
-                            <div key={contact.name} className="hover:scale-120 cursor-pointer w-fit transition-all duration-300 ease-out">
+                            <Link  target="_blank" href={contact.href} key={contact.name} className="hover:scale-120 cursor-pointer w-fit transition-all duration-300 ease-out">
                                 {contact.icon}
-                            </div>
+                            </Link>
                         ))
                     }
                 </div>

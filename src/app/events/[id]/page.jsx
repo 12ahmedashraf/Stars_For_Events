@@ -10,7 +10,7 @@ export default async function EventRegistration({params})
 
     return (
         <div className="flex flex-col items-center md:items-start md:flex-row gap-5 md:justify-between md:mr-15 md:mt-30 mt-20 mb-10 md:ml-10 ">
-                <div className="banner relative w-full md:w-3xl h-100 overflow-hidden md:rounded-3xl">
+                <div className="banner relative w-full md:w-3xl h-150 overflow-hidden md:rounded-3xl">
                     <Image src={event.image_url} fill  alt="Event banner" className="object-cover"/>
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute bottom-5 md:left-0 p-6 text-white flex flex-col gap-1">

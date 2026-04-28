@@ -63,7 +63,7 @@ export default function About()
                         })}
                     </div>
                     <div className="Logo_and_text z-40 flex flex-col items-center gap-20">
-                           <div className="bg-white/10 backdrop-blur-md border hover:scale-110 hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
+                           <div className="bg-white/10 backdrop-blur-md border hover:scale-110  transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
                            <h5 className="text-sm md:text-lg font-light text-white/40 font-mono">About us</h5>
                            </div>
                            <div className="title">
@@ -96,7 +96,7 @@ export default function About()
                 </div>
                 <div className="md:ml-10 md:mr-10 gap-10 our-vision flex md:flex-row flex-col items-center md:items-start">
                     <div className="textContent flex flex-col gap-5 items-center md:items-start">
-                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
+                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit  transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
                            <h5 className="text-sm md:text-lg font-light text-white/40 font-mono  ">Our Vision</h5>
                            </div>
                            <h1 className="font-sans font-black  text-2xl md:text-4xl text-center uppercase">Beyond the <span className="text-white/40">Stars!</span></h1>
@@ -106,19 +106,19 @@ export default function About()
                     src="/shehab.png" 
                     width={800} 
                     height={600}
-                    className=" hover:scale-110 transition-all hover:cursor-pointer duration-300 w-full shadow-2xl shadow-amber-50  inset-0  max-w-100 rounded-2xl h-auto object-contain"
+                    className=" hover:scale-110 transition-all hover:cursor-pointer duration-300 w-full shadow-lg shadow-amber-50  inset-0  max-w-100 rounded-2xl h-auto object-contain"
                     alt="shehab"
                     />
                 </div>
                 <div className="md:ml-10 md:mr-10 mt-15 gap-10 our-vision flex  flex-col items-center ">
                     <div className="textContent flex flex-col gap-5 items-center">
-                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
+                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit  transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
                            <h5 className="text-sm md:text-lg font-light text-white/40 font-mono ">Our Mission</h5>
                            </div>
                            <h1 className="font-sans font-black  text-2xl md:text-4xl text-center uppercase">How we <span className="text-white/40">Shine?</span></h1>
                     </div>
                     <div className="boxes flex flex-col md:flex-row gap-10">
-                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                        <div className="box border-2 w-fit max-w-xs  p-5 hover:scale-110 rounded-2xl border-white/80 flex flex-col items-center gap-5 bg-white/80 hover:border-white/20 transition-all duration-500 group">
                                         <LogoStar className="" style={{
                                     width: `35px`,
                                     height: `35px`,
@@ -129,7 +129,7 @@ export default function About()
                                     <p className="font-mono text-xs md:text-sm text-black font-light  text-center">Setting a new benchmark for how events are organized and experienced, ensuring every gathering meets a professional, high-fidelity standard.</p>
                                 </div>
                         </div>
-                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white/80 hover:border-white/20 transition-all duration-500 group">
                                         <LogoStar className="" style={{
                                     width: `35px`,
                                     height: `35px`,
@@ -140,7 +140,7 @@ export default function About()
                                     <p className="font-mono text-xs md:text-sm text-black font-light  text-center">Developing the digital infrastructure that removes logistical friction, allowing the focus to remain on the event and the community.</p>
                                 </div>
                         </div>
-                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white/80 hover:border-white/20 transition-all duration-500 group">
                                         <LogoStar className="" style={{
                                     width: `35px`,
                                     height: `35px`,
@@ -151,7 +151,7 @@ export default function About()
                                     <p className="font-mono text-xs md:text-sm text-black font-light  text-center">Building a sustainable ecosystem where technical and creative communities can move beyond the screen and connect in person.</p>
                                 </div>
                         </div>
-                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white hover:border-white/20 transition-all duration-500 group">
+                        <div className="box border-2 w-fit max-w-xs hover:cursor-pointer p-5 hover:scale-110 rounded-2xl border-white flex flex-col items-center gap-5 bg-white/80 hover:border-white/20 transition-all duration-500 group">
                                         <LogoStar className="" style={{
                                     width: `35px`,
                                     height: `35px`,
@@ -166,7 +166,7 @@ export default function About()
                 </div>
                 <div className="our-gallery mt-10 flex items-center flex-col">
                     <div className="textContent flex flex-col gap-5 items-center mb-10 justify-center">
-                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
+                         <div className=" bg-white/10 backdrop-blur-md border hover:scale-110 w-fit transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl">
                            <h5 className="text-sm md:text-lg font-light text-white/40 font-mono ">Our Gallery</h5>
                            </div>
                            <h1 className="font-sans font-black text-white/40  text-2xl md:text-4xl text-center uppercase">Some of our <span className="text-white">Shines!</span></h1>

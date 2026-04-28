@@ -56,8 +56,8 @@ export default function EventsPage({events})
 
                 </div>
                 <div className="event-boxes grid md:grid-cols-4 mt-10 grid-cols-1 ">
-                        {events.map((item,index)=>(<div key={item.title} className="event-box rounded-4xl w-85 pb-10 border flex flex-col gap-4 border-white overflow-hidden items-center">
-                           <div className="banner relative w-full h-50 border-b border-b-white/30 "> 
+                        {events.map((item,index)=>(<Link key={item.title} href = {`/events/${item.id}`} className="event-box rounded-4xl w-85 pb-10 border flex flex-col gap-4 border-white overflow-hidden items-center">
+                           <div className="banner relative w-full h-63 border-b border-b-white/30 "> 
                                 <Image 
                                     src={item.image_url}
                                     alt={item.title} 
@@ -73,13 +73,13 @@ export default function EventsPage({events})
                             <div className="content gap-4 ml-10 mt-2 mb-3 w-full flex flex-col">
                                 <div className="location  flex gap-4"><MapPin size={20}/>
                                  <p className="font-sans font-light text-sm">{item.location}</p></div>
-                                  <div className="location  flex gap-4"><Calendar size={20}/>
+                                  <div className="date  flex gap-4"><Calendar size={20}/>
                                  <p className="font-sans font-light text-sm">{new Date(item.event_date).toLocaleDateString()}</p></div>
-                                  <div className="location  flex gap-4"><Ticket size={20}/>
+                                  <div className="price  flex gap-4"><Ticket size={20}/>
                                  <p className="font-sans font-light text-sm uppercase">{item.price === 0 ? "Tickets for free!" :item.price}</p></div>
                             </div>
-                            <div><Link href = {`/events/${item.id}`} className="mx-10  font-sans animate-pop bg-white text-black p-2 text-sm font-black rounded-3xl">Book Now!</Link></div>
-                        </div>
+                            <div><div   className="mx-10  font-sans animate-pop bg-white text-black p-2 text-sm font-black rounded-3xl">Read more</div></div>
+                        </Link>
                         ))}
                     </div>
                

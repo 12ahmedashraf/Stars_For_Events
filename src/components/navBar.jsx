@@ -29,7 +29,7 @@ export default function NavBar()
     { name: "Home", href: "/", icon: <Calendar size={16} /> },
     { name: "About Us", href: "/about", icon: <ImageIcon size={16} /> },
     { name: "Events", href: "/events", icon: <Info size={16} /> },
-    { name: "Book Now!", href: "/events", icon: <MessageSquare size={16} /> },
+    { name: "Book Now!", href: "/events/08a7fcf7-e7d8-4c41-ac5a-faa899e55b88", icon: <MessageSquare size={16} /> },
   ];
   useEffect(() => {
   const handleClickOutside = () => {
@@ -153,7 +153,7 @@ export default function NavBar()
                     </Show>
                     <Show when="signed-in">
                           <div className="mr-5 gap-10 flex flex-col items-center jusify-center">
-                            <Link href="/user" className="flex items-center gap-3 bg-white text-black px-12 py-4 rounded-full font-sans font-black uppercase tracking-widest  transition-all">Profile</Link>
+                            <Link onClick={toggleMenu} href="/user" className="flex items-center gap-3 bg-white text-black px-12 py-4 rounded-full font-sans font-black uppercase tracking-widest  transition-all">Profile</Link>
                             <UserButton  appearance={{ elements: {userButtonTrigger: "!w-15 !h-15",userButtonAvatarImage: "!w-15 !h-15", userButtonAvatarBox: "!w-15 !h-15 border border-white/20 hover:border-white/50 transition-all" } }} />
                           </div>
                     </Show>

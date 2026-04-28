@@ -61,7 +61,7 @@ export default function ImageSlider({slides})
                 >
                     <Image 
                     src={slides[current].image} 
-                    className="h-full w-full object-cover opacity-90 pointer-events-none"
+                    className="h-full w-full object-cover opacity-96 pointer-events-none"
                     alt={slides[current].title}
                     fill
                     />

@@ -10,6 +10,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'i.postimg.cc',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'your-project-id.supabase.co',
         port: '',
         pathname: '/storage/v1/object/public/**',
