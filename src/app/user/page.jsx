@@ -171,7 +171,7 @@ export default function UserPage(){
                                             </div>
                                         </div>
                                         </div>
-                                        {result.error && <p>{result.error}</p>}
+                                        {result.error && <p className="font-sans text-xs text-red-500">{result.error}</p>}
                                         <button
                                             type="submit"
                                             disabled={Pending}
