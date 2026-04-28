@@ -7,7 +7,7 @@ export default clerkMiddleware(async (auth, req) => {
   const { userId, sessionClaims } = await auth();
 
   if (userId) {
-    const isOnboarded = sessionClaims?.metadata?.onboarded === true;
+    const isOnboarded = sessionClaims?.metadata?.Onboarded === true;
 
     if (!isOnboarded && !isOnboardingRoute(req)) {
       return NextResponse.redirect(new URL('/user', req.url));

@@ -2,7 +2,9 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { supabase } from '@/lib/supabase'
+import { createClerkClient } from '@clerk/nextjs/server'
 
+const clerkClient = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY })
 export async function POST(req) {
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET
 
@@ -48,7 +50,7 @@ export async function POST(req) {
     const email = email_addresses[0]?.email_address;
     const fullName = `${first_name || ''} ${last_name || ''}`.trim();
 
-    const { error } = await supabase.from('profiles').insert([
+    const { error:dberr } = await supabase.from('profiles').insert([
       { 
         id: id, 
         email: email, 
@@ -57,9 +59,18 @@ export async function POST(req) {
       }
     ]);
 
-    if (error) {
-      console.error('Supabase Insertion Error:', error);
+    if (dberr) {
+      console.error('Supabase Insertion Error:', dberr);
       return new Response('Error saving user to database', { status: 500 })
+    }
+    try {
+      await clerkClient.users.updateUserMetadata(id, {
+        publicMetadata: {
+          Onboarded: false 
+        }
+      });
+    } catch (metadataError) {
+      console.error('Clerk Metadata Error:', metadataError);
     }
   }
 
