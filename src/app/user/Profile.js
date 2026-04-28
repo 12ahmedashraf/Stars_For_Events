@@ -5,9 +5,9 @@ export default async function ProfileUpdates(ps,formm)
 {
     const {userId} =  await auth();
     if(!userId) return {success:false,error:"Unauthorized"};
-    const fullname = formm.get('full_name');
-    const whatsapp = formm.get('whatsapp_number');
-    const address = formm.get('address');
+    const fullname = formm.get("full_name");
+    const whatsapp = formm.get("whatsapp_number");
+    const address = formm.get("address");
 
     const {error:supabaseError} = await supabase.from('profiles')
     .upsert({
