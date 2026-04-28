@@ -1,11 +1,11 @@
 "use server";
-import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { getSupabaseAuthClient } from "@/lib/supabase";
 import { clerkClient, auth } from "@clerk/nextjs/server";
-
 export default async function ProfileUpdates(ps, formm) {
-    const { userId } = await auth();
+    const { userId, getToken } = await auth();
     if (!userId) return { success: false, error: "Unauthorized" };
-
+    const token = await getToken({ template: 'supabase' });
+    const supabase = getSupabaseAuthClient(token);
     const client = await clerkClient();
     const user = await client.users.getUser(userId);
     const email = user.emailAddresses?.[0]?.emailAddress;
@@ -14,7 +14,7 @@ export default async function ProfileUpdates(ps, formm) {
     const whatsapp = formm.get("whatsapp_number");
     const address = formm.get("address");
 
-    const { error: supabaseError } = await supabaseAdmin
+    const { error: supabaseError } = await supabase
         .from('profiles')
         .upsert({
             id: userId,

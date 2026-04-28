@@ -1,3 +1,4 @@
+import Book from "@/components/BookingButton";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import Image from "next/image";
 export default async function EventRegistration({params})
@@ -32,9 +33,7 @@ export default async function EventRegistration({params})
                         <div className="pricee">
                             <h2 className="font-light font-mono text-lg md:text-xl">Price: <span className=" font-black">For Free!</span></h2>
                         </div>
-                        <button className="border border-white rounded-3xl hover:scale-105 cursor-pointer transition-all duration-300 p-2 font-black text-lg md:text-xl">
-                            Book
-                        </button>
+                        <Book eventId={event.id} eventTitle={event.title}/>
                     </div>):<></>
                 }
         </div>
