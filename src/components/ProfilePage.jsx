@@ -4,7 +4,7 @@ import { LogoStar } from "@/components/icons";
 import { useUser,UserAvatar } from "@clerk/nextjs";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import ProfileUpdates from "./Profile";
+import ProfileUpdates from "@/app/user/Profile";
 import { User,MapPin,Phone,Ticket} from "lucide-react";
 import Link from "next/link";
 export default function UserPage(user,profile,tickets){
