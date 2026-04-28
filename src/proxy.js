@@ -1,6 +1,21 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
-export default clerkMiddleware();
+const isOnboardingRoute = createRouteMatcher(['/user(.*)']);
+
+export default clerkMiddleware(async (auth, req) => {
+  const { userId, sessionClaims } = await auth();
+
+  if (userId) {
+    const isOnboarded = sessionClaims?.metadata?.onboarded === true;
+
+    if (!isOnboarded && !isOnboardingRoute(req)) {
+      return NextResponse.redirect(new URL('/user', req.url));
+    }
+  }
+
+  return NextResponse.next();
+});
 
 export const config = {
   matcher: [
