@@ -1,7 +1,6 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { supabase } from "@/lib/supabase";
 import UserPage from "@/components/ProfilePage";
-
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 export default async function UserProfile() {
     const { userId } = await auth();
     if (!userId) return null;
@@ -9,7 +8,7 @@ export default async function UserProfile() {
     const client = await clerkClient();
     const user = await client.users.getUser(userId);
 
-    const { data: tickets } = await supabase
+    const { data: tickets } = await supabaseAdmin
         .from('bookings')
         .select(`
             id,
@@ -22,7 +21,7 @@ export default async function UserProfile() {
         `)
         .eq('profile_id', userId);
 
-    const { data: profile } = await supabase
+    const { data: profile } = await supabaseAdmin
         .from('profiles')
         .select("full_name, whatsapp_number, address")
         .eq('id', userId)

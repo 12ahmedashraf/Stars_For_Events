@@ -1,8 +1,7 @@
 "use client";
 import { useActionState, useEffect, useId, useState } from "react";
 import { LogoStar } from "@/components/icons";
-import { useUser, UserAvatar } from "@clerk/nextjs";
-import { supabase } from "@/lib/supabase";
+import { UserAvatar } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import ProfileUpdates from "@/app/user/Profile";
 import { User, MapPin, Phone, Ticket } from "lucide-react";
@@ -13,6 +12,10 @@ export default function UserPage({ user, profile, tickets }) {
     const stars = Array.from({ length: 25 });
     const router = useRouter();
     const [result, formAction, Pending] = useActionState(ProfileUpdates, { success: false, error: null });
+
+    const [fullName, setFullName] = useState(profile?.full_name || '');
+    const [address, setAddress] = useState(profile?.address || '');
+    const [whatsapp, setWhatsapp] = useState(profile?.whatsapp_number || '');
 
     useEffect(() => {
         if (result.success) {
@@ -90,7 +93,7 @@ export default function UserPage({ user, profile, tickets }) {
                     </div>
                 </div>
                 <div className="formm p-5 w-full">
-                    <form key={profile.full_name} action={formAction} className="flex flex-col gap-10 items-center">
+                    <form action={formAction} className="flex flex-col gap-10 items-center">
                         <div className="content flex flex-col w-full gap-5">
                             <div className="fullName flex flex-col gap-3">
                                 <label htmlFor="FullName" className="font-mono text-white/40 text-sm">Full Name</label>
@@ -100,7 +103,8 @@ export default function UserPage({ user, profile, tickets }) {
                                         id="FullName"
                                         name="full_name"
                                         required
-                                        defaultValue={profile.full_name}
+                                        value={fullName}
+                                        onChange={(e) => setFullName(e.target.value)}
                                         type="text"
                                         placeholder="Write your Full Name here"
                                         className="hover:border-0 w-full mr-5 py-1 px-4 focus:ring-0 outline-none rounded-2xl placeholder:font-sans font-sans"
@@ -115,7 +119,8 @@ export default function UserPage({ user, profile, tickets }) {
                                         id="address"
                                         name="address"
                                         required
-                                        defaultValue={profile.address}
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
                                         type="text"
                                         placeholder="Street, city, governerate"
                                         className="hover:border-0 w-full mr-5 py-1 px-4 focus:ring-0 outline-none rounded-2xl placeholder:font-sans font-sans"
@@ -130,7 +135,8 @@ export default function UserPage({ user, profile, tickets }) {
                                         id="WhatsappNumber"
                                         name="whatsapp_number"
                                         required
-                                        defaultValue={profile.whatsapp_number}
+                                        value={whatsapp}
+                                        onChange={(e) => setWhatsapp(e.target.value)}
                                         type="text"
                                         placeholder="e.g 01XXXXXXXXX"
                                         className="hover:border-0 w-full mr-5 py-1 px-4 focus:ring-0 outline-none rounded-2xl placeholder:font-sans font-sans"
@@ -158,7 +164,7 @@ export default function UserPage({ user, profile, tickets }) {
                 <div className="tickets w-sm md:w-3xl bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl shadow-xl flex flex-col items-center">
                     {tickets && tickets.length > 0
                         ? <div className="tickets-available flex flex-col gap-2 p-2">
-                            {tickets.map((item, index) => (
+                            {tickets.map((item) => (
                                 <div className="ticket flex gap-5 md:gap-10" key={item.id}>
                                     <Ticket size={15} />
                                     <p className="text-white/20 font-mono">{item.events?.title}</p>
