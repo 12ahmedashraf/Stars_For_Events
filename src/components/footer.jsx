@@ -5,17 +5,17 @@ const contactLinks = [
  
   { 
     name: "Instagram", 
-    href: "https://instagram.com/stars", 
+    href: "https://www.instagram.com/stars_for_events?igsh=MWxwOHJrdXh1Z3MxeA==", 
     icon: <Instagram size={20} />, 
   },
   { 
     name: "Email", 
-    href: "mailto:ahmed4uashraf@gmail.com", 
+    href: "mailto:Starsvc23@gmail.com", 
     icon: <Mail size={20} />, 
   },
   { 
     name: "Phone", 
-    href: "tel:+20123456789", 
+    href: "tel:+201229962915", 
     icon: <Phone size={20} />, 
   },
 ];

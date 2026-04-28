@@ -84,9 +84,9 @@ export default function NavBar()
                                    onClick={(e)=>{e.stopPropagation();
                                 }}
                                 >
-                                  <Link href="https://instagram.com" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">Instagram</Link>
-                                  <Link href="https://facebook.com" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">CALL</Link>
-                                  <Link href="mailto:hello@stars.com" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">Email</Link>
+                                  <Link href="https://www.instagram.com/stars_for_events?igsh=MWxwOHJrdXh1Z3MxeA==" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">Instagram</Link>
+                                  <Link href="tel:+201229962915" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">CALL</Link>
+                                  <Link href="mailto:Starsvc23@gmail.com" className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-colors">Email</Link>
                                 </div>
                               </div>
                               </div>
