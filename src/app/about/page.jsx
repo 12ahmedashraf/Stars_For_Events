@@ -10,12 +10,20 @@ export default function About()
 {
         const baseId = useId();
         const stars = Array.from({length: 25});
-        const gallery=[
-            {
-                title:'shehab',
-                image: '/shehab.png',
-            }
-        ]
+       const gallery = [
+    {
+      title: "Our Pablo shine",
+      image: "/shehab.png",
+    },
+    {
+      title: "Masar Igbary & Shehab concert shine",
+      image: "/1.jpeg",
+    },
+    {
+      title: "Masar Igbary & Shehab concert shine",
+      image: "/2.jpeg",
+    },
+  ];
         return(
             <div className="about mb-15">
                 <div className="heroSection relative min-h-screen w-full z-0 flex items-center justify-center overflow-hidden bg-black">
