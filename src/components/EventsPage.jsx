@@ -78,7 +78,7 @@ export default function EventsPage({events})
                                   <div className="location  flex gap-4"><Ticket size={20}/>
                                  <p className="font-sans font-light text-sm uppercase">{item.price === 0 ? "Tickets for free!" :item.price}</p></div>
                             </div>
-                            <div><Link href="" className="mx-10  font-sans animate-pop bg-white text-black p-2 text-sm font-black rounded-3xl">Book Now!</Link></div>
+                            <div><Link href = {`/events/${item.id}`} className="mx-10  font-sans animate-pop bg-white text-black p-2 text-sm font-black rounded-3xl">Book Now!</Link></div>
                         </div>
                         ))}
                     </div>
