@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import ProfileUpdates from "./Profile";
 import { User,MapPin,Phone,Ticket} from "lucide-react";
 import Link from "next/link";
-import { div } from "framer-motion/client";
 export default function UserPage(){
     const baseId = useId();
     const stars = Array.from({length: 25});
@@ -20,12 +19,12 @@ export default function UserPage(){
         async function LoadProfile()
         {
             if(!user?.id) return;
-            const {data} = await supabase.from('profiles').select("full_name","whatsapp_number","address").eq('id',user?.id).single();
+            const {data} = await supabase.from('profiles').select("full_name ,whatsapp_number ,address").eq('id',user?.id).maybeSingle();
             if(data)
             {
-                setProfile({full_name: prof.full_name || `${user?.firstName || ''} ${user?.lastName || ''}`.trim(),
-                whatsapp_number: prof.whatsapp_number || '',
-                address: prof.address || ''
+                setProfile({full_name: data.full_name || `${user?.firstName || ''} ${user?.lastName || ''}`.trim(),
+                whatsapp_number: data.whatsapp_number || '',
+                address: data.address || ''
             });
             }
         }
@@ -50,18 +49,17 @@ export default function UserPage(){
             LoadTickets();
         }
     },[isLoaded, isSignedIn,user]);
-    useEffect(()=>{
-        if(result.success)
-        {
-            user?.reload().then(()=>{
-                if(user.publicMetadata?.Onboarded!== true)
-                {
-                    router.push('/events');
-                }
+    useEffect(() => {
+    if (result.success) {
+        user?.reload().then(() => {
+            if (user?.publicMetadata?.Onboarded === true) {
+                router.push('/events');
+            } else {
                 router.refresh();
-            });
-        }
-    },[result.success,user,router])
+            }
+        });
+    }
+}, [result.success, user, router]);
         const Onboarded = user?.publicMetadata?.Onboarded === true;
       return (
         <div className="flex flex-col items-center">
@@ -128,7 +126,7 @@ export default function UserPage(){
                                 </div>
                                 </div>
                                 <div className="formm p-5 w-full">
-                                    <form action={formAction} className="flex flex-col gap-10 items-center">
+                                    <form key={profile.full_name} action={formAction} className="flex flex-col gap-10 items-center">
                                         <div className="content flex flex-col w-full gap-5">
                                         <div className="fullName flex flex-col  gap-3 ">
                                             <label htmlFor="FullName" className="font-mono text-white/40  text-sm">Full Name</label>
@@ -145,12 +143,12 @@ export default function UserPage(){
                                             </div>
                                         </div>
                                         <div className="Address flex flex-col  gap-3 ">
-                                            <label htmlFor="Address" className="font-mono text-white/40  text-sm">Address</label>
+                                            <label htmlFor="address" className="font-mono text-white/40  text-sm">Address</label>
                                             <div className="input-border  focus-within:border-white flex items-center border border-white/20 rounded-2xl w-full">
                                             <MapPin size={23} className="ml-3 my-1 text-white/20"/>
                                             <input 
-                                            id="Address"
-                                            name="Address"
+                                            id="address"
+                                            name="address"
                                             required
                                             defaultValue={profile.address}
                                             type="text" 
@@ -191,10 +189,10 @@ export default function UserPage(){
                             <div className="tickets  w-sm md:w-3xl bg-white/10 backdrop-blur-md border  border-white/20 p-5 rounded-2xl shadow-xl flex flex-col items-center ">
                                 {tickets ? <div className="tickets-available flex flex-col gap-2 p-2">
                                     {tickets.map((item,index)=>(
-                                        <div className="ticket flex gap-5 md:gap-10" key={index}>
+                                        <div className="ticket flex gap-5 md:gap-10" key={item.id}>
                                             <Ticket size={15}/>
                                             <p className="text-white/20 font-mono">{item.events?.title}</p>
-                                            <p className="text-white/20 font-mono">{item.event?.price === 0 ? 'FREE' : item.event?.price}</p>
+                                            <p className="text-white/20 font-mono">{item.events?.price === 0 ? 'FREE' : item.event?.price}</p>
                                             <p className="text-white/20 font-mono">{new Date(item.created_at).toLocaleDateString()}</p>
                                         </div>
                                     ))}

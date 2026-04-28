@@ -4,13 +4,13 @@ import { clerkClient,auth } from "@clerk/nextjs/server";
 export default async function ProfileUpdates(ps,formm)
 {
     const {userId} =  await auth();
-    if(!userId) return {succes:false,error:"Unauthorized"};
+    if(!userId) return {success:false,error:"Unauthorized"};
     const fullname = formm.get('full_name');
     const whatsapp = formm.get('whatsapp_number');
     const address = formm.get('address');
 
     const {error:supabaseError} = await supabase.from('profiles')
-    .update({
+    .upsert({
         onboarding_complete:true,
         full_name:fullname,
         whatsapp_number:whatsapp,
