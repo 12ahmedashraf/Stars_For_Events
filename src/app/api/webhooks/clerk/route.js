@@ -1,7 +1,7 @@
 // src/app/api/webhooks/clerk/route.js
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
-import { supabase, supabaseAdmin } from '@/lib/supabase'
+import {  supabaseAdmin } from '@/lib/supabaseAdmin'
 import { createClerkClient } from '@clerk/nextjs/server'
 
 const clerkClient = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY })
@@ -50,7 +50,7 @@ export async function POST(req) {
     const email = email_addresses[0]?.email_address;
     const fullName = `${first_name || ''} ${last_name || ''}`.trim();
 
-    const { error:dberr } = await supabaseAdmin.from('profiles').insert([
+    const { error:dberr } = await supabaseAdmin.from('profiles').upsert([
       { 
         id: id, 
         email: email, 
