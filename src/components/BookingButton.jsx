@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getSupabaseAuthClient } from "@/lib/supabase";
-import { useAuth, useUser ,useSession} from "@clerk/nextjs";
+import { useAuth, useUser ,useSession, useClerk} from "@clerk/nextjs";
 export default function Book({eventId,eventTitle})
 {
     const { getToken, isSignedIn } = useAuth();
@@ -11,10 +11,12 @@ export default function Book({eventId,eventTitle})
     const {user} = useUser();
     const router = useRouter();
     const [loading,setLoading] = useState(false);
+    const { redirectToSignUp } = useClerk();
     const bookAction = async () => {
         if(!session || !user){
-            alert("please sign in to book the event!");
-            return;
+            return redirectToSignUp({
+            signUpFallbackRedirectUrl: window.location.href, 
+        });
         }
         setLoading(true);
         try{
