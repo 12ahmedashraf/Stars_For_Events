@@ -10,18 +10,26 @@ export default function About()
 {
         const baseId = useId();
         const stars = Array.from({length: 25});
-       const gallery = [
+       const gallery = [ 
+    {
+      title: "Masar Igbary & Shehab concert shine",
+      image: "/11.jpeg",
+    },
     {
       title: "Our Pablo shine",
-      image: "/shehab.png",
+      image: "/16.jpeg",
     },
     {
       title: "Masar Igbary & Shehab concert shine",
-      image: "/1.jpeg",
+      image: "/9.jpeg",
+    },
+     {
+      title: "Masar Igbary & Shehab concert shine",
+      image: "/15.jpeg",
     },
     {
       title: "Masar Igbary & Shehab concert shine",
-      image: "/2.jpeg",
+      image: "/12.jpeg",
     },
   ];
         return(

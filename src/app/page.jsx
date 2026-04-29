@@ -7,7 +7,7 @@ export default function Home() {
   const HomePageSlides = [
     {
       title: "Our Pablo shine",
-      image: "/shehab.png",
+      image: "/2.jpeg",
     },
     {
       title: "Masar Igbary & Shehab concert shine",
@@ -15,7 +15,15 @@ export default function Home() {
     },
     {
       title: "Masar Igbary & Shehab concert shine",
-      image: "/2.jpeg",
+      image: "/3.jpeg",
+    },
+    {
+      title: "Masar Igbary & Shehab concert shine",
+      image: "/9.jpeg",
+    },
+    {
+      title: "Masar Igbary & Shehab concert shine",
+      image: "/8.jpeg",
     },
   ];
   const features = [
@@ -71,9 +79,20 @@ export default function Home() {
               <h1 className=" border-t-2  border-t-zinc-500 mb-10 font-sans text-lg text-center md:text-2xl uppercase font-black ">We don&apos;t just organize events , we create life changing experiences!</h1>
             <ImageSlider slides={HomePageSlides}/>
             </div>
+            <div className="our-partners flex flex-col items-center gap-10 mb-25 ">
+                <h1 className="w-fit border-t-2  border-t-zinc-500 font-sans text-lg text-center md:text-2xl uppercase font-black ">Success Partners</h1>
+                <div className="partners-grid grid grid-cols-3 md:grid-cols-3 items-center justify-center   mx-5 gap-5 md:gap-20 ">
+                      <Image src="/partners_home/marathon.png" height={200} width={200} alt="alexandria marathon"/>
+                      <Image src="/partners_home/gps.png" height={200} width={200} alt=" gps"/>
+                      <Image src="/partners_home/lumo.png" height={200} width={200} alt="lumo"/>
+                      <Image src="/partners_home/noujom.png" height={200} width={200} alt=" noujom"/>
+                      <Image src="/partners_home/vc.png" height={200} width={200} alt=" vc"/>
+                      <Image src="/partners_home/to7fa.png" height={200} width={200} alt="to7fa"/>
+                </div>
+            </div>
             <div className="3-steps-to-shine">
-              <div className="heading flex justify-center">
-              <h1 className="border-t-2 border-t-zinc-500 mb-10 font-sans text-lg md:text-2xl text-center uppercase font-black w-fit">3 steps to shine!</h1>
+              <div className="heading flex justify-center mb-10">
+              <h1 className="border-t-2 border-t-zinc-500  font-sans text-lg md:text-2xl text-center uppercase font-black w-fit">3 steps to shine!</h1>
               </div>
               <div className="steps-boxes flex flex-col gap-10 md:flex-row mb-10">
                 <div className="step-box border-2 p-10 hover:cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out rounded-4xl flex items-center gap-5 border-amber-50 ">
