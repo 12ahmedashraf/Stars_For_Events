@@ -74,9 +74,16 @@ export default function EventsPage({events})
                                 <div className="location  flex gap-4"><MapPin size={20}/>
                                  <p className="font-sans font-light text-sm">{item.location}</p></div>
                                   <div className="date  flex gap-4"><Calendar size={20}/>
-                                 <p className="font-sans font-light text-sm">{new Date(item.event_date).toLocaleDateString()}</p></div>
+                                 <p className="font-sans font-light text-sm">{new Intl.DateTimeFormat('en-GB', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true 
+        }).format(new Date(item.event_date))}</p></div>
                                   <div className="price  flex gap-4"><Ticket size={20}/>
-                                 <p className="font-sans font-light text-sm uppercase">{item.price === 0 ? "Tickets for free!" :item.price}</p> <span className="font-sans font-light text-sm uppercase"> EGP</span></div>
+                                 <p className="font-sans font-light text-sm uppercase mr-0">{item.price === 0 ? "Tickets for free!" :`${item.price} EGP`}</p></div>
                             </div>
                             <div><div   className="mx-10  font-sans animate-pop bg-white text-black p-2 text-sm font-black rounded-3xl">Read more</div></div>
                         </Link>

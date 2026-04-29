@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+*{
+  scrollbar-width: thin; 
+  scrollbar-color: #404040 transparent;
+  scrollbar-gutter: stable both-edges;
+}
 :root {
   --background: #000000;
   --foreground: #ffffff;
