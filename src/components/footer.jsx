@@ -27,7 +27,7 @@ export default function Footer(){
                 <div className="image flex flex-col gap-10 items-center">
                     <Image src="/text-logo.png" height={150} width={150} alt=""/>
                 </div>
-                <div className="social flex gap-5 items-center">
+                <div className="social flex gap-5 items-center justify-center">
                     {
                         contactLinks.map((contact)=>(
                             <Link  target="_blank" href={contact.href} key={contact.name} className="hover:scale-120 cursor-pointer w-fit transition-all duration-300 ease-out">
@@ -37,9 +37,9 @@ export default function Footer(){
                     }
                 </div>
             </div>
-            <div className="endd">
+            <div className="endd ">
                 <div className="text border-b-2 p-5 border-b-zinc-600">
-                    <p className="items-center font-mono tracking-wider hover:text-white hover:cursor-pointer transition-all duration-200 text-white/65 text-xs md:text-sm ">Book , Attend & Shine like a Star!</p>
+                    <p className="items-center font-mono tracking-wider hover:text-white hover:cursor-pointer transition-all duration-200 text-white/65 text-xs md:text-sm  md:text-left text-center ">Book , Attend & Shine like a Star!</p>
                 </div>
                 <p className="items-center text-center p-5 font-mono tracking-wider hover:text-white hover:cursor-pointer transition-all duration-200 text-white/65 text-xs md:text-sm ">© 2026 Stars for events. All Rights Reserved.</p>
             </div>

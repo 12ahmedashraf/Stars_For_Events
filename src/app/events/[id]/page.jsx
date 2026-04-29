@@ -18,8 +18,6 @@ export default async function EventRegistration({params})
                         <p className="text-white/60 font-mono">{new Date(event.event_date).toLocaleString()}</p>
                     </div>
                 </div>
-                { 
-                    event.price === 0?(
                     <div className="info bg-white/10 backdrop-blur-md border  duration-300 border-white/20 p-5 rounded-2xl shadow-xl flex flex-col gap-7">
                         <div className="headinggg flex md:flex-row flex-col gap-3 md:justify-between md:items-center">
                             <h1 className="font-black text-2xl">{event.title}</h1>
@@ -31,11 +29,11 @@ export default async function EventRegistration({params})
                             <p>{event.description}</p>
                         </div>
                         <div className="pricee">
-                            <h2 className="font-light font-mono text-lg md:text-xl">Price: <span className=" font-black">For Free!</span></h2>
+                            <h2 className="font-light font-mono text-lg md:text-xl">Price: <span className=" font-black">{event.price}</span> <span className=" font-black"> EGP</span></h2>
                         </div>
                         <Book eventId={event.id} eventTitle={event.title}/>
-                    </div>):<></>
-                }
+                    </div>
+                
         </div>
     )
 }
