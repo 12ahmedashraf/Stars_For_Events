@@ -1,5 +1,6 @@
 import Book from "@/components/BookingButton";
 import { LogoStar } from "@/components/icons";
+import Timer from "@/components/Timer";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { MapPin,Ticket ,Stars} from "lucide-react";
 import Image from "next/image";
@@ -11,8 +12,9 @@ export default async function EventRegistration({params})
     if(error || ! event)
         return <h1 className="text-2xl">Event not found!</h1>
 
-    return (
-        <div className="flex flex-col items-center md:items-start md:flex-row gap-5 md:justify-between md:mr-15 md:mt-30 mt-20 mb-10 md:ml-10 ">
+    return (<div className=" md:mr-15  mt-15 mb-10 md:ml-10 flex flex-col gap-5">
+        <Timer eDate={event.event_date}/>
+        <div className="flex flex-col items-center md:items-start md:flex-row gap-5 md:justify-between ">
                 <div className="banner relative w-full md:w-3xl h-150 overflow-hidden md:rounded-3xl">
                     <Image src={event.image_url} fill  alt="Event banner" className="object-cover"/>
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
@@ -96,6 +98,6 @@ export default async function EventRegistration({params})
                         <Book eventId={event.id} eventTitle={event.title}/>
                     </div>
                 
-        </div>
+        </div></div>
     )
 }
