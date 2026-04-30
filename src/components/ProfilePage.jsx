@@ -86,7 +86,7 @@ export default function UserPage({ user, profile, tickets }) {
                         }}
                     />
                     <div className="flex flex-col gap-1">
-                        <h1 className="font-sans text-lg md:text-xl">{user?.username}</h1>
+                        <h1 className="font-sans text-lg md:text-xl">{fullName}</h1>
                         <p className="font-mono text-sm text-white/40">
                             {user?.primaryEmailAddress?.emailAddress}
                         </p>
@@ -167,10 +167,10 @@ export default function UserPage({ user, profile, tickets }) {
                             {tickets.map((item) => (
                                 <div className="ticket flex gap-5 md:gap-20 items-center " key={item.id}>
                                     <Ticket size={30} />
-                                    <p className="text-white/20 font-mono">{item.events?.title}</p>
-                                    <p className="text-white/20 font-mono">{item.events?.price === 0 ? 'FREE' : `${item.events?.price} EGP`}</p>
-                                    <p className="text-white/20 font-mono">{new Date(item.booked_at).toLocaleDateString()}</p>
-                                    <p className="text-white/20 font-mono">{item.status}</p>
+                                    <p className="text-white/20 font-mono text-xs md:text-sm">{item.events?.title}</p>
+                                    <p className="text-white/20 font-mono text-xs md:text-sm">{item.events?.price === 0 ? 'FREE' : `${item.events?.price} EGP`}</p>
+                                    <p className="text-white/20 font-mono text-xs md:text-sm">{new Date(item.booked_at).toLocaleDateString()}</p>
+                                    <p className="text-white/20 font-mono text-xs md:text-sm">{item.status}</p>
                                 </div>
                             ))}
                         </div>

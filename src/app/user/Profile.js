@@ -1,6 +1,7 @@
 "use server";
 import { getSupabaseAuthClient } from "@/lib/supabase";
 import { clerkClient, auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 export default async function ProfileUpdates(ps, formm) {
     const { userId, getToken } = await auth();
     if (!userId) return { success: false, error: "Unauthorized" };
@@ -16,22 +17,27 @@ export default async function ProfileUpdates(ps, formm) {
 
     const { error: supabaseError } = await supabase
         .from('profiles')
-        .upsert({
+        .update({
             id: userId,
             email: email,
             onboarding_complete: true,
             full_name: fullname,
             whatsapp_number: whatsapp,
             address: address
-        });
-
+        }).eq('id', userId);
+        const { data,error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', userId)
+        .single();
     if (supabaseError) return { success: false, error: supabaseError.message };
 
     await client.users.updateUser(userId, {
         publicMetadata: {
-            Onboarded: true
+            Onboarded: true,
+            role: data?.role
         },
     });
-
+    revalidatePath('/user','layout');
     return { success: true, error: null };
 }

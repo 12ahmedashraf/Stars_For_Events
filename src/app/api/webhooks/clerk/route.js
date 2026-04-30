@@ -50,12 +50,13 @@ export async function POST(req) {
     const email = email_addresses[0]?.email_address;
     const fullName = `${first_name || ''} ${last_name || ''}`.trim();
 
-    const { error:dberr } = await supabaseAdmin.from('profiles').upsert([
+    const { error:dberr } = await supabaseAdmin.from('profiles').inser([
       { 
         id: id, 
         email: email, 
         full_name: fullName,
-        onboarding_complete: false 
+        onboarding_complete: false,
+        role: 'user'
       }
     ]);
 
@@ -66,7 +67,8 @@ export async function POST(req) {
     try {
       await clerkClient.users.updateUserMetadata(id, {
         publicMetadata: {
-          Onboarded: false 
+          Onboarded: false,
+          role: 'user'
         }
       });
     } catch (metadataError) {
