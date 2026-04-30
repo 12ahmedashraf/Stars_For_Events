@@ -50,7 +50,7 @@ export async function POST(req) {
     const email = email_addresses[0]?.email_address;
     const fullName = `${first_name || ''} ${last_name || ''}`.trim();
 
-    const { error:dberr } = await supabaseAdmin.from('profiles').inser([
+    const { error:dberr } = await supabaseAdmin.from('profiles').insert([
       { 
         id: id, 
         email: email, 
