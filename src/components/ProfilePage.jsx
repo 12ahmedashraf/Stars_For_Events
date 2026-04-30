@@ -168,8 +168,9 @@ export default function UserPage({ user, profile, tickets }) {
                                 <div className="ticket flex gap-5 md:gap-20 items-center " key={item.id}>
                                     <Ticket size={30} />
                                     <p className="text-white/20 font-mono">{item.events?.title}</p>
-                                    <p className="text-white/20 font-mono">{item.events?.price === 0 ? 'FREE' : item.events?.price}</p>
+                                    <p className="text-white/20 font-mono">{item.events?.price === 0 ? 'FREE' : `${item.events?.price} EGP`}</p>
                                     <p className="text-white/20 font-mono">{new Date(item.booked_at).toLocaleDateString()}</p>
+                                    <p className="text-white/20 font-mono">{item.status}</p>
                                 </div>
                             ))}
                         </div>
