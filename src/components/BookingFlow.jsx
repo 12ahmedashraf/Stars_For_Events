@@ -19,16 +19,16 @@ export default function BookingFlow({ event }) {
     const [checkout, setCheckout] = useState(false);
     const [method, setMethod] = useState("");
     const [txn, setTxn] = useState("");
-
+    const [tfrom, setTfrom] = useState("");
     const checkoutAction = () => {
-        if (!session || !user) {
+        if (!session.isSignedIn || !user) {
             return redirectToSignUp({ signUpFallbackRedirectUrl: window.location.href });
         }
         setCheckout(true);
     };
 
     const bookAction = async () => {
-        if (!method || !txn.trim()) return;
+        if (!method || !txn.trim()||!tfrom.trim()) return;
         setLoading(true);
         try {
             const token = await getToken({ template: 'supabase' });
@@ -38,7 +38,8 @@ export default function BookingFlow({ event }) {
                 event_id: event.id,
                 profile_id: user.id,
                 transaction_type: method,
-                transaction_number: txn.trim()
+                transaction_number: txn.trim(),
+                transfer_from: tfrom.trim()
             }]);
             if (error) throw error;
             alert(`Success! You are booked for ${event.title}, Wait for a confirmation from us!`);
@@ -109,7 +110,7 @@ export default function BookingFlow({ event }) {
                     ) : (
                         <div className=" flex flex-col w-full md:w-xl gap-5">
                             <div className=" flex items-center ">
-                                <button onClick={() => { setCheckout(false); setMethod(""); setTxn(""); }} className="text-white cursor-pointer hover:text-white transition-colors">
+                                <button onClick={() => { setCheckout(false); setMethod(""); setTxn("");setTfrom(""); }} className="text-white cursor-pointer hover:text-white transition-colors">
                                     <ArrowLeft size={21} />
                                 </button>
                                 <h1 className="font-black text-2xl w-full text-center">Payment</h1>
@@ -139,12 +140,21 @@ export default function BookingFlow({ event }) {
                                 </select>
                             </div>
                             <div className="w-full flex flex-col gap-2">
-                                <p className="text-white/50 text-xs font-mono uppercase tracking-widest">Transaction number</p>
+                                <p className="text-white/50 text-xs font-mono uppercase tracking-widest">Transaction ID</p>
                                 <input
                                     type="text"
                                     value={txn}
                                     onChange={e => setTxn(e.target.value)}
                                     placeholder="The number of the successful transaction"
+                                    className="w-full bg-white/5 border border-white/30 rounded-xl px-4 py-3 text-white font-mono text-sm placeholder:text-white/30 focus:outline-none focus:border-white transition-colors" />
+                            </div>
+                            <div className="w-full flex flex-col gap-2">
+                                <p className="text-white/50 text-xs font-mono uppercase tracking-widest">The Account/number you paid with</p>
+                                <input
+                                    type="text"
+                                    value={tfrom}
+                                    onChange={e => setTfrom(e.target.value)}
+                                    placeholder="The number/account you paid with"
                                     className="w-full bg-white/5 border border-white/30 rounded-xl px-4 py-3 text-white font-mono text-sm placeholder:text-white/30 focus:outline-none focus:border-white transition-colors" />
                             </div>
                             <div className="w-full flex justify-between items-center px-1">
@@ -153,8 +163,8 @@ export default function BookingFlow({ event }) {
                             </div>
                             <button
                                 onClick={bookAction}
-                                disabled={loading || !method || !txn.trim()}
-                                className={`border border-white rounded-3xl transition-all duration-300 w-full p-2 font-black text-lg md:text-xl ${loading || !method || !txn.trim() ? 'cursor-not-allowed text-white/30 border-white/30' : 'hover:scale-105 cursor-pointer'}`}>
+                                disabled={loading || !method || !txn.trim() || !tfrom.trim()}
+                                className={`border border-white rounded-3xl transition-all duration-300 w-full p-2 font-black text-lg md:text-xl ${loading || !method || !txn.trim() ||!tfrom.trim() ? 'cursor-not-allowed text-white/30 border-white/30' : 'hover:scale-105 cursor-pointer'}`}>
                                 {loading ? "Booking..." : "Book"}
                             </button>
                         </div>
