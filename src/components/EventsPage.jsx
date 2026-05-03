@@ -55,26 +55,26 @@ export default function EventsPage({events})
                     
 
                 </div>
-                <div className="event-boxes grid md:grid-cols-4 mt-10 grid-cols-1 ">
+                <div className="event-boxes grid md:grid-cols-4 mt-10 grid-cols-1  gap-10 md:gap-30">
                         {events.map((item,index)=>(<Link key={item.title} href = {`/events/${item.id}`} className="event-box rounded-4xl w-85 pb-10 border flex flex-col gap-4 border-white overflow-hidden items-center">
                            <div className="banner relative w-full h-63 border-b border-b-white/30 "> 
-                                <Image 
-                                    src={item.image_url}
+                               {item.image_url !== "empty" && <Image 
+                                    src={ item.image_url}
                                     alt={item.title} 
                                     width={400} 
                                     height={225}
                                     className="w-full h-full object-cover" 
-                                />
-                                <div className="status animate-pulse  absolute top-5 right-5 hover:scale-110 transition-all duration-300 cursor-pointer  bg-green-400 rounded-2xl p-2 text-sm ">
+                                />}
+                                <div className={`status animate-pulse  absolute top-5 right-5 hover:scale-110 transition-all duration-300 cursor-pointer  0 rounded-2xl p-2 text-sm ${item.status === 'LIVE' ? 'bg-green-400' : (item.status === 'SOLD' ? 'bg-red-500':'bg-yellow-400')}`}>
                                     <h2 className="font-mono">{item.status}</h2>
                                 </div>
                             </div>
-                            <h1 className="font-black font-sans text-center uppercase text-white text-xl md:text-2xl">NextStep</h1>
+                            <h1 className="font-black font-sans text-center uppercase text-white text-xl md:text-2xl">{item.title}</h1>
                             <div className="content gap-4 ml-10 mt-2 mb-3 w-full flex flex-col">
                                 <div className="location  flex gap-4"><MapPin size={20}/>
-                                 <p className="font-sans font-light text-sm">{item.location}</p></div>
+                                 <p className="font-sans font-light text-sm">{!item.location ? 'TBD' : item.location}</p></div>
                                   <div className="date  flex gap-4"><Calendar size={20}/>
-                                 <p className="font-sans font-light text-sm">{new Intl.DateTimeFormat('en-GB', {
+                                 <p className="font-sans font-light text-sm">{!item.event_date ? 'TBD' : new Intl.DateTimeFormat('en-GB', {
         year: 'numeric',
         month: 'short',
         day: '2-digit',
@@ -83,7 +83,7 @@ export default function EventsPage({events})
         hour12: true 
         }).format(new Date(item.event_date))}</p></div>
                                   <div className="price  flex gap-4"><Ticket size={20}/>
-                                 <p className="font-sans font-light text-sm uppercase mr-0">{item.price === 0 ? "Tickets for free!" :`${item.price} EGP`}</p></div>
+                                 <p className="font-sans font-light text-sm uppercase mr-0">{!item.price ? "TBD" :`${item.price} EGP`}</p></div>
                             </div>
                             <div><div   className="mx-10  font-sans animate-pop bg-white text-black p-2 text-sm font-black rounded-3xl">Read more</div></div>
                         </Link>

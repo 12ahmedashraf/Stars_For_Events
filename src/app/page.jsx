@@ -79,8 +79,8 @@ export default function Home() {
               <h1 className=" border-t-2  border-t-zinc-500 mb-10 font-sans text-lg text-center md:text-2xl uppercase font-black ">We don&apos;t just organize events , we create life changing experiences!</h1>
             <ImageSlider slides={HomePageSlides}/>
             </div>
-            <div className="our-partners flex flex-col items-center gap-10 mb-25 ">
-                <h1 className="w-fit border-t-2  border-t-zinc-500 font-sans text-lg text-center md:text-2xl uppercase font-black ">Our Partners</h1>
+            <div className="our-partners flex flex-col items-center gap-1 mb-25 ">
+                <h1 className="w-fit border-t-2  border-t-zinc-500 mb-10 font-sans text-lg text-center md:text-2xl uppercase font-black ">Our Partners</h1>
                 <div className="partners-grid grid grid-cols-3 md:grid-cols-3 items-center justify-center   mx-5 gap-5 md:gap-20 ">
                       <Image src="/partners_home/marathon.png" height={200} width={200} alt="alexandria marathon"/>
                       <Image src="/partners_home/gps.png" height={200} width={200} alt=" gps"/>
@@ -88,6 +88,9 @@ export default function Home() {
                       <Image src="/partners_home/noujom.png" height={200} width={200} alt=" noujom"/>
                       <Image src="/partners_home/vc.png" height={200} width={200} alt=" vc"/>
                       <Image src="/partners_home/to7fa.png" height={200} width={200} alt="to7fa"/>
+                </div>
+                <div className="flex justify-center">
+                  <Image src="/hefzy.jpeg" height={200} width={200} alt=""/>
                 </div>
             </div>
             <div className="3-steps-to-shine">
