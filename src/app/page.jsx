@@ -66,7 +66,7 @@ export default function Home() {
                     <h1 className="font-sans font-bold text-center uppercase md:text-[15px] text-sm">{feature.title}</h1>
                   </div>
                   <div className="desc">
-                    <p className="font-sans md:text-sm text-xs text-center">{feature.desc}</p>
+                    <p className="font-sans font-bold md:text-sm text-xs text-center">{feature.desc}</p>
                   </div>
                   <div className="icon">
                   {feature.icon}</div>
@@ -81,15 +81,18 @@ export default function Home() {
             </div>
             <div className="our-partners flex flex-col items-center gap-1 mb-25 ">
                 <h1 className="w-fit border-t-2  border-t-zinc-500 mb-10 font-sans text-lg text-center md:text-2xl uppercase font-black ">Our Partners</h1>
-                <div className="partners-grid grid grid-cols-3 md:grid-cols-3 items-center justify-center   mx-5 gap-5 md:gap-20 ">
+                <div className="partners-grid grid grid-cols-3 md:grid-cols-4 items-center justify-center   mx-5 gap-5 md:gap-10 ">
                       <Image src="/partners_home/marathon.png" height={200} width={200} alt="alexandria marathon"/>
                       <Image src="/partners_home/gps.png" height={200} width={200} alt=" gps"/>
                       <Image src="/partners_home/lumo.png" height={200} width={200} alt="lumo"/>
                       <Image src="/partners_home/noujom.png" height={200} width={200} alt=" noujom"/>
                       <Image src="/partners_home/vc.png" height={200} width={200} alt=" vc"/>
                       <Image src="/partners_home/to7fa.png" height={200} width={200} alt="to7fa"/>
+                      <Image src="/partners_home/4abkazem.png" height={200} width={200} alt="4abkazem"/>
+                      <Image src="/partners_home/starsmedia.png" height={200} width={200} alt="stars media"/>
                 </div>
                 <div className="flex justify-center">
+                                        <Image src="/partners_home/keloggs.jpeg" height={200} width={200} alt="keloggs"/>
                   <Image src="/hefzy.jpeg" height={200} width={200} alt=""/>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useActionState, useEffect, useId, useState } from "react";
 import { LogoStar } from "@/components/icons";
-import { UserAvatar } from "@clerk/nextjs";
+import { UserAvatar, useSession } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import ProfileUpdates from "@/app/user/Profile";
 import { User, MapPin, Phone, Ticket } from "lucide-react";
@@ -11,6 +11,7 @@ export default function UserPage({ user, profile, tickets }) {
     const baseId = useId();
     const stars = Array.from({ length: 25 });
     const router = useRouter();
+    const { session } = useSession();
     const [result, formAction, Pending] = useActionState(ProfileUpdates, { success: false, error: null });
 
     const [fullName, setFullName] = useState(profile?.full_name || '');
@@ -19,10 +20,12 @@ export default function UserPage({ user, profile, tickets }) {
 
     useEffect(() => {
         if (result.success) {
-            router.refresh();
-            router.push('/events');
+            session?.reload().then(() => {
+                router.push('/events');
+                router.refresh();
+            });
         }
-    }, [result.success, router]);
+    }, [result.success, router, session]);
 
     const isOnboarded = user?.publicMetadata?.Onboarded === true;
 
@@ -165,7 +168,7 @@ export default function UserPage({ user, profile, tickets }) {
                     {tickets && tickets.length > 0
                         ? <div className="tickets-available flex flex-col gap-2 p-2">
                             {tickets.map((item) => (
-                                <div className="ticket flex gap-5 md:gap-20 items-center " key={item.id}>
+                                <div className="ticket flex gap-5 md:gap-20 items-center" key={item.id}>
                                     <Ticket size={30} />
                                     <p className="text-white/20 font-mono text-xs md:text-sm">{item.events?.title}</p>
                                     <p className="text-white/20 font-mono text-xs md:text-sm">{item.events?.price === 0 ? 'FREE' : `${item.events?.price} EGP`}</p>
