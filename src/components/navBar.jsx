@@ -4,12 +4,14 @@ import { Menu , Calendar,Info,ImageIcon,MessageSquare , XCircle,User} from "luci
 import { LogoStar } from "@/components/icons";
 import { useState , useEffect} from "react";
 import Link from "next/link";
-import { SignInButton,SignUpButton,Show,UserButton } from "@clerk/nextjs";
+import { SignInButton,SignUpButton,Show,UserButton, useUser } from "@clerk/nextjs";
 export default function NavBar()
 {
     const [isMenuOpen,setMenuOpen] = useState(false);
     const [scrolled,setScrolled] = useState(false);
     const toggleMenu = () => setMenuOpen(!isMenuOpen);
+    const { user } = useUser();
+    const isAdmin = user?.publicMetadata?.role === 'admin';
     
     useEffect(() => {
     const handleScroll = () => {
@@ -20,16 +22,16 @@ export default function NavBar()
   }, [setScrolled]);
     const [ContactOpen,setContactOpen] = useState(0);
     const navLinks = [
-    { name: "Home", href: "/", icon: <Calendar size={16} /> },
-    { name: "About Us", href: "/about", icon: <ImageIcon size={16} /> },
-    { name: "Events", href: "/events", icon: <Info size={16} /> },
-    { name: "Contact Us", href: "/contact", icon: <MessageSquare size={16} /> },
+    { name: "Home", href: "/", icon: <Calendar size={21} /> },
+    { name: "About Us", href: "/about", icon: <ImageIcon size={21} /> },
+    { name: "Events", href: "/events", icon: <Info size={21} /> },
+    { name: "Contact Us", href: "/contact", icon: <MessageSquare size={21} /> },
   ];
   const MobilenavLinks = [
-    { name: "Home", href: "/", icon: <Calendar size={16} /> },
-    { name: "About Us", href: "/about", icon: <ImageIcon size={16} /> },
-    { name: "Events", href: "/events", icon: <Info size={16} /> },
-    { name: "Book Now!", href: "/events/08a7fcf7-e7d8-4c41-ac5a-faa899e55b88", icon: <MessageSquare size={16} /> },
+    { name: "Home", href: "/", icon: <Calendar size={21} /> },
+    { name: "About Us", href: "/about", icon: <ImageIcon size={21} /> },
+    { name: "Events", href: "/events", icon: <Info size={21} /> },
+    ...(isAdmin ? [{ name: "Admin", href: "/admin", icon: <User size={21} /> }] : [{ name: "Book Now!", href: "/events/08a7fcf7-e7d8-4c41-ac5a-faa899e55b88", icon: <MessageSquare size={16} /> }]),
   ];
   useEffect(() => {
   const handleClickOutside = () => {
@@ -113,6 +115,11 @@ export default function NavBar()
                         </Show>
                         <Show when="signed-in">
                           <div className="mr-5 gap-5 flex">
+                          {isAdmin && (
+                            <div className="bg-white/10 backdrop-blur-md border hover:scale-110 hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl flex items-center">
+                              <Link href="/admin" className="md:text-xs font-light text-white/40 font-mono">Admin</Link>
+                            </div>
+                          )}
                           <div className="bg-white/10 backdrop-blur-md border hover:scale-110 hover:cursor-pointer transition-all duration-300 border-white/20 p-1.5 rounded-2xl shadow-xl flex items-center">
                             <Link href="/user" className="md:text-xs font-light text-white/40 font-mono ">Profile</Link></div>
                             <UserButton  appearance={{ elements: { userButtonAvatarBox: "!w-9.5 !h-9.5 border border-white/20 hover:border-white/50 transition-all" } }} />
